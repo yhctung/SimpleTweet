@@ -2,7 +2,7 @@
 
 **SimpleTweet** is an android app that allows a user to view his Twitter timeline. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
-Time spent: **12** hours spent in total
+Time spent: **13** hours spent in total
 
 ## User Stories
 
@@ -10,9 +10,9 @@ The following **required** functionality is completed:
 
 - [x] User can **sign in to Twitter** using OAuth login
 - [x]	User can **view tweets from their home timeline**
-  - [ ] User is displayed the username, name, and body for each tweet
-  - [ ] User is displayed the [relative timestamp](https://gist.github.com/nesquena/f786232f5ef72f6e10a7) for each tweet "8m", "7h"
-- [ ] User can refresh tweets timeline by pulling down to refresh
+  - [x] User is displayed the username, name, and body for each tweet
+  - [x] User is displayed the [relative timestamp](https://gist.github.com/nesquena/f786232f5ef72f6e10a7) for each tweet "8m", "7h"
+- [x] User can refresh tweets timeline by pulling down to refresh
 
 The following **optional** features are implemented:
 
@@ -42,7 +42,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-I implemented the basics of this project but I've been reinstalling a clean copy of android studio since it kept crashing. I don't have the gif walkthrough yet but will update as soon as possible.
+Finished the basics, planning on doing the optionals when I have time.
 
 ## Open-source libraries used
 
@@ -51,7 +51,7 @@ I implemented the basics of this project but I've been reinstalling a clean copy
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2019] [Yung-Hsin Tung]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
