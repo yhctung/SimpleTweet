@@ -12,7 +12,6 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="5dp"
         tools:srcCompat="@tools:sample/avatars[6]"
         android:contentDescription="@string/todo" />
 
@@ -21,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft = "5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         tools:text="thisismyusername" />
 
@@ -31,4 +31,15 @@
         android:layout_below="@+id/tvScreenName"
         android:layout_toEndOf="@+id/ivProfileImage"
         tools:text="This is my tweet" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        tools:text="16h" />
+
 </RelativeLayout>
