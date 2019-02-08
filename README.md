@@ -13,7 +13,7 @@ The following **required** functionality is completed:
   - [x] User can then enter a new tweet and post this to twitter
   - [x] User is taken back to home timeline with **new tweet visible** in timeline
   - [x] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
-  - [ ] User can **see a counter with total number of characters left for tweet** on compose tweet page
+  - [x] User can **see a counter with total number of characters left for tweet** on compose tweet page
 
 The following **optional** features are implemented:
 
@@ -28,11 +28,11 @@ The following **optional** features are implemented:
 
 The following **bonus** features are implemented:
 
-- [ ] User can view more tweets as they scroll with infinite pagination
+- [x] User can view more tweets as they scroll with infinite pagination
 - [ ] Compose tweet functionality is build using modal overlay
 - [x] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.org/android/Using-Parceler).
 - [ ] Replace all icon drawables and other static image assets with [vector drawables](http://guides.codepath.org/android/Drawables#vector-drawables) where appropriate.
-- [ ] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
+- [x] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
 - [ ] User can view following / followers list through any profile they view.
 - [ ] User can see embedded image media within the tweet detail view
 - [ ] Use the popular ButterKnife annotation library to reduce view boilerplate.
@@ -47,7 +47,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="https://github.com/yhctung/SimpleTweet/blob/master/AU.A34.gif" width=250><br>
+<img src="https://github.com/yhctung/SimpleTweet/blob/master/AU.A36.gif" width=250><br>
 <img src="https://github.com/yhctung/SimpleTweet/blob/master/AU.A31.gif" width=250><br>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
