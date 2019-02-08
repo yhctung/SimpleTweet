@@ -31,15 +31,18 @@ import cz.msebera.android.httpclient.Header;
 
 public class TimelineActivity extends AppCompatActivity {
 
-    private final int REQUEST_CODE = 20;
-
     private TwitterClient client;
     private RecyclerView rvTweets;
     private TweetsAdapter adapter;
     private List<Tweet> tweets;
 
+    static long tweetLastID = Long.MAX_VALUE;
+
+    private final int REQUEST_CODE = 20;
     private SwipeRefreshLayout swipeContainer;
-    //private EndlessRecyclerViewScrollListener scrollListener;
+
+    // For infinite pagination
+    private EndlessRecyclerViewScrollListener scrollListener; // store member variable for listener
 
     // static long tweetUID = Long.MAX_VALUE;
 
@@ -51,6 +54,7 @@ public class TimelineActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient(this);
 
         swipeContainer = findViewById(R.id.swipeContainer);
+
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -65,10 +69,12 @@ public class TimelineActivity extends AppCompatActivity {
         adapter = new TweetsAdapter(this, tweets);
 
         // Recycler View setup: layout manager and setting the adapter
-        rvTweets.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rvTweets.setLayoutManager(linearLayoutManager);
         rvTweets.setAdapter(adapter);
         populateHomeTimeline();
 
+        // For Pull-to-Refresh
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -77,36 +83,43 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
 
-        /*
+        // Retain an instance so that you can call 'resetState()' for fresh searches
         scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager){
-            onLoadMore(int page, int totalItemsCount, RecyclerView view){
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view){
+                // triggered when new data is needed
                 Log.i("TwitterClient", "No more data on scroll");
-                loadNextDataFromApi();
+                loadMoreData();
             }
         };
-
         // Add scroll listener to RecyclerView
         rvTweets.addOnScrollListener(scrollListener);
-
     }
 
-    private void loadNextDataFromApi() {
+    // make another API call to get next page of tweets and add objects to our current tweet list
+    public void loadMoreData() {
         client.getNextPageOfTweets(new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Log.d("smile", response.toString());
 
-                List<Tweet> tweetsToAppend = new ArrayList<>;
+                List<Tweet> tweetsToAppend = new ArrayList<>();
 
                 for (int i = 0; i < response.length(); i++){
                     try {
+                        // Make tweet object from json object
                         JSONObject jsonObject = response.getJSONObject(i);
                         Tweet tweet = Tweet.fromJson(jsonObject);
                         tweetsToAppend.add(tweet);
+
+                        if(tweet.uid < tweetLastID){
+                            tweetLastID = tweet.uid;
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
+                // add all the tweets
                 adapter.addTweets(tweetsToAppend);
             }
 
@@ -119,9 +132,7 @@ public class TimelineActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.e("smile", throwable.toString());
             }
-        });
-    }
-    */
+        }, tweetLastID);
     }
 
     @Override
@@ -176,6 +187,11 @@ public class TimelineActivity extends AppCompatActivity {
                         tweetsToAdd.add(tweet);
                             // Notify adapter one by one
                             // adapter.notifyItemInserted(tweets.size() - 1);  // added at last position
+
+                        // setting the "lowest" id to uid of last loaded tweet
+                        if (tweet.uid < tweetLastID){
+                            tweetLastID = tweet.uid;
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
