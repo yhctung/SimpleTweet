@@ -12,8 +12,8 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="14dp"
         android:contentDescription="@string/todo"
         tools:srcCompat="@tools:sample/avatars[6]" />
 
@@ -21,32 +21,45 @@
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="12dp"
-        android:layout_toEndOf="@+id/ivProfileImage"
-        tools:text="thisismyusername" />
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="-6dp"
+        android:layout_toEndOf="@+id/tvName"
+        android:textSize="14sp"
+        tools:text="placeholder" />
 
     <TextView
         android:id="@+id/tvBody"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvScreenName"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="6dp"
+        android:layout_width="280dp"
+        android:layout_height="52dp"
+        android:layout_below="@+id/tvName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
-        tools:text="This is my tweet" />
+        android:autoLink="all"
+        android:linksClickable="true"
+        tools:text="This is my tweet. To be or not be that is the question. Whether 'tis nobler in the mind to suffer the slings and arrows of outrageous fortune or take" />
 
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/tvScreenName"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="18dp"
         tools:text="16h" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-6dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="Generic Placeholder" />
 
 </RelativeLayout>

@@ -1,7 +1,5 @@
 package com.codepath.apps.restclienttemplate;
 
-// import android.content.Intent;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,8 +24,6 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
-// import android.view.Menu;
-// import android.view.MenuItem;
 
 public class TimelineActivity extends AppCompatActivity {
 
@@ -43,8 +39,6 @@ public class TimelineActivity extends AppCompatActivity {
 
     // For infinite pagination
     private EndlessRecyclerViewScrollListener scrollListener; // store member variable for listener
-
-    // static long tweetUID = Long.MAX_VALUE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

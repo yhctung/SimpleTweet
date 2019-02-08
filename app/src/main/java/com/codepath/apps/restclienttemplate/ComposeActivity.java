@@ -57,7 +57,6 @@ public class ComposeActivity extends AppCompatActivity {
                 // for testing
                 // Toast.makeText(ComposeActivity.this, tweetContent, Toast.LENGTH_LONG).show();
                 // Make API call to Twitter to publish the content in edit text
-
                 client.composeTweet(tweetContent, new JsonHttpResponseHandler(){
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -80,8 +79,6 @@ public class ComposeActivity extends AppCompatActivity {
                 });
             }
         });
-
-
 
         etCompose.addTextChangedListener(new TextWatcher() {
             @Override
